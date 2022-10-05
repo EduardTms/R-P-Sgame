@@ -41,11 +41,12 @@ function bestOf5() {
     return winner(count);
 }
 
+// returns the result of the bo5 game
 const winner = (count) => {
     if(count < 2) {
         return 'Player loses!';
     } else {
-        return 'Player wins!';
+        return 'Player wins!!';
     }
 }
 
