@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.container{
+    width: 100vw;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+
+/* Buttons */
+
+.button {
+    --c: rgb(2, 45, 124);
+    color: var(--c);
+    font-size: 16px;
+    border: 0.3em solid var(--c);
+    border-radius: 0.5em;
+     width: 12em;
+    height: 3em; 
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: sans-serif;
+    letter-spacing: 0.1em;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: 0.5s;
+    margin: 1em;
+}
+
+.button:hover {
+    transform: translateY(0) scale(1.1);
+}
+
+.reset {
+    --c: rgb(65, 2, 168);
+    color: var(--c);
+}
+  

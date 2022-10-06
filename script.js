@@ -1,3 +1,12 @@
+const rockBtn = document.getElementById('rock');
+const paperBtn = document.getElementById('paper');
+const scissorsBtn = document.getElementById('scissors');
+const restartBtn = document.getElementById('resetGame');
+
+let playerScore = 0;
+let computerScore = 0;
+let winner = '';
+
 const getComputerChoice = () => {
     let choices = ['rock', 'paper', 'scissors'];
     let choice = choices[Math.floor(Math.random()*3)];
@@ -5,48 +14,59 @@ const getComputerChoice = () => {
 }
 
 function playRound(playerSelection, computerSelection) {
-    // const win = `You Win!! ${playerSelection} beats ${computerSelection}`;
-    // const lose = `You Lose!! ${computerSelection} beats ${playerSelection}`;
-    // const draw = `It's a draw! You both chose ${playerSelection}`;
+    const win = `You Win!! ${playerSelection} beats ${computerSelection}`;
+    const lose = `You Lose!! ${computerSelection} beats ${playerSelection}`;
+    const draw = `It's a draw! You both chose ${playerSelection}`;
 
+    if (playerScore === 5) {
+        console.log( `Player wins!`);
+    } else if (computerScore === 5) {
+        console.log(`Computer wins!`);
+    }
+
+    console.log(computerScore, playerScore);
     if(playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
-        return undefined;
+        return draw;
     } else if (playerSelection.toLowerCase() === 'rock' && computerSelection.toLowerCase() === 'paper') {
-        return false;
+        computerScore += 1;
+        return lose;
     } else if (playerSelection.toLowerCase() === 'paper' && computerSelection.toLowerCase() === 'rock') {
-        return true;
+        playerScore += 1;
+        return win;
     } else if (playerSelection.toLowerCase() === 'rock' && computerSelection.toLowerCase() === 'scissors') {
-        return true;
+       playerScore += 1;
+        return win;
     } else if (playerSelection.toLowerCase() === 'scissors' && computerSelection.toLowerCase() === 'rock') {
-        return false;
+        computerScore += 1;
+        return lose;
     } else if (playerSelection.toLowerCase() === 'paper' && computerSelection.toLowerCase() === 'scissors') {
-        return false;
+        computerScore += 1;
+        return lose;
     } else if (playerSelection.toLowerCase() === 'scissors' && computerSelection.toLowerCase() === 'paper') {
-        return true;
+        playerScore += 1;
+        return win;
     }
+
+  
 }
 
-function bestOf5() {
-    let count = 0;
-    for(i=0; i<5; i++) {
-        let player = prompt('Rock Paper or Scissors: '); 
-        let computer = getComputerChoice();
-        let result = playRound(player,computer);
-        if(result === true) {
-            count++;
-        } else if (result === false){
-            count--;
-        }
-    }
-    return winner(count);
-}
 
-// returns the result of the bo5 game
-const winner = (count) => {
-    if(count < 2) {
-        return 'Player loses!';
-    } else {
-        return 'Player wins!!';
-    }
-}
+rockBtn.addEventListener('click', () => {
+    return playRound(rockBtn.id, getComputerChoice());
+});
+
+paperBtn.addEventListener('click', () => {
+    return playRound(paperBtn.id, getComputerChoice());
+});
+
+scissorsBtn.addEventListener('click', () => {
+    return playRound(scissorsBtn.id, getComputerChoice());
+});
+
+restartBtn.addEventListener('click', () => {
+    console.log('Game reseted');
+    playerScore = 0;
+    computerScore = 0;
+});
+
 
